@@ -92,8 +92,8 @@ kbd {
 /* ---------- atmosphere -------------------------------------------------- */
 
 .grain {
-  position: fixed; inset: -100%; z-index: 90; pointer-events: none;
-  width: 300%; height: 300%;
+  position: fixed; inset: -50%; z-index: 90; pointer-events: none;
+  width: 200%; height: 200%; /* 4× the viewport instead of 9×: same texture, a fraction of the GPU memory */
   opacity: 0.055;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grain 1.4s steps(6) infinite;
@@ -260,6 +260,7 @@ body.is-loading .nav { opacity: 0; }
   --head-x: 58.2%;
   --head-y: 23.7%;
   position: absolute; z-index: 1; bottom: 0; left: 58%;
+  height: min(78vh, 1240px, 64vw);
   height: min(78svh, 1240px, 64vw);
   aspect-ratio: 1391 / 1600;
   transform: translateX(calc(-1 * var(--head-x)));
@@ -287,12 +288,14 @@ body.is-loading .nav { opacity: 0; }
 .halo__line--faint { stroke-opacity: 0.12; }
 .halo__ticks { fill: none; stroke: var(--fg); stroke-opacity: 0.32; stroke-width: 12; stroke-dasharray: 1.2 20.79; }
 .halo__ticks--major { stroke-opacity: 0.6; stroke-width: 26; stroke-dasharray: 2.4 217.5; }
-.halo__spin { transform-origin: 500px 500px; animation: spin 140s linear infinite; }
-.halo__text { font: 400 25px/1 var(--serif); letter-spacing: 0.2em; fill: var(--fg); fill-opacity: 0.5; }
+/* the lettering spins on its own HTML layer so the GPU rotates a bitmap instead of redrawing the SVG every frame */
+.halo__ring { position: absolute; inset: 0; animation: spin 140s linear infinite; will-change: transform; }
+.halo__ring svg { width: 100%; height: 100%; overflow: visible; }
+.halo__text { font: 300 25px/1 var(--serif); letter-spacing: 0.2em; fill: var(--fg); fill-opacity: 0.5; }
 .halo__glyphs circle { fill: var(--bg); }
 .halo__glyphs use { fill: none; stroke: var(--fg-2); stroke-width: 1.5; stroke-linejoin: round; }
 
-.ouroboros { position: absolute; inset: 13%; animation: spin 26s linear infinite; }
+.ouroboros { position: absolute; inset: 13%; animation: spin 26s linear infinite; will-change: transform; }
 .ouroboros__body {
   position: absolute; inset: 0; border-radius: 50%;
   background: conic-gradient(from 0deg, transparent 0deg 10deg, rgb(214 242 58 / 0.04) 40deg, rgb(214 242 58 / 0.6) 250deg, var(--acid) 330deg, transparent 330.4deg);
@@ -306,7 +309,7 @@ body.is-loading .nav { opacity: 0; }
   box-shadow: 0 0 0 4px rgb(214 242 58 / 0.12), 0 0 22px rgb(214 242 58 / 0.55);
 }
 .halo.is-fast .ouroboros { animation-duration: 1.4s; }
-.halo.is-fast .halo__spin { animation-duration: 6s; }
+.halo.is-fast .halo__ring { animation-duration: 6s; }
 
 .hero__top, .hero__mid, .hero__name-wrap, .hero__bar { position: relative; z-index: 3; }
 .hero__top, .hero__mid { pointer-events: none; }
@@ -514,12 +517,12 @@ body.is-loading .hero__top, body.is-loading .hero__intro, body.is-loading .hero_
 .journey__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 48px var(--gap); }
 .circles { grid-column: 1 / span 5; }
 .circles__sticky { position: sticky; top: calc(var(--nav-h) + 6vh); }
-.circles svg { width: 100%; max-width: 760px; max-height: calc(100svh - var(--nav-h) - 14vh - 40px); height: auto; overflow: visible; }
+.circles svg { width: 100%; max-width: 760px; max-height: calc(100vh - var(--nav-h) - 14vh - 40px); max-height: calc(100svh - var(--nav-h) - 14vh - 40px); height: auto; overflow: visible; }
 .ring { fill: none; stroke: var(--fg); stroke-opacity: 0.16; stroke-width: 1; transition: stroke 0.8s var(--ease), stroke-opacity 0.8s var(--ease), stroke-width 0.8s var(--ease); vector-effect: non-scaling-stroke; }
 .ring--next { stroke-dasharray: 2 6; }
 .ring.is-past { stroke-opacity: 0.45; }
 .ring.is-active { stroke: var(--acid); stroke-opacity: 1; stroke-width: 1.6; }
-.ring-num { font: italic 400 22px/1 var(--serif); fill: var(--fg-3); transition: fill 0.8s var(--ease); }
+.ring-num { font: italic 300 22px/1 var(--serif); fill: var(--fg-3); transition: fill 0.8s var(--ease); }
 .ring-num-bg { fill: var(--bg); }
 .ring-num.is-active { fill: var(--acid); }
 .ring-axis { stroke: var(--fg); stroke-opacity: 0.08; }
@@ -684,7 +687,7 @@ body.is-loading .hero__top, body.is-loading .hero__intro, body.is-loading .hero_
    tighten the hero so the whole poster fits above the fold. */
 @media (min-width: 900px) and (orientation: landscape) and (min-height: 600px) and (max-height: 880px) {
   .hero { padding-top: calc(var(--nav-h) + 14px); }
-  .hero__portrait { height: min(72svh, 1240px, 64vw); } /* keeps the halo clear of the nav */
+  .hero__portrait { height: min(72vh, 1240px, 64vw); height: min(72svh, 1240px, 64vw); } /* keeps the halo clear of the nav */
   .hero__mid { padding-top: 2.5vh; padding-bottom: 1.5vh; }
   .hero__role { font-size: clamp(30px, 5.4vh, 48px); }
   .hero__focus { margin-top: 10px; }
@@ -715,7 +718,8 @@ body.is-loading .hero__top, body.is-loading .hero__intro, body.is-loading .hero_
   .hero__top { order: 1; }
   .hero__portrait {
     order: 2; position: relative; left: auto; bottom: auto; transform: none;
-    width: min(92vw, 560px, 62svh); height: auto; margin: clamp(40px, min(13vw, 14svh), 120px) auto 0;
+    width: min(92vw, 560px, 62vh); width: min(92vw, 560px, 62svh); height: auto;
+    margin: clamp(40px, min(13vw, 14vh), 120px) auto 0; margin: clamp(40px, min(13vw, 14svh), 120px) auto 0;
   }
   .hero__name-wrap { order: 3; }
   .hero__name { margin-top: -0.52em; }
@@ -775,9 +779,22 @@ body.is-loading .hero__top, body.is-loading .hero__intro, body.is-loading .hero_
   .nav .btn--sm { display: none; }
 }
 
+/* Weak devices (few cores, little memory, data saver): drop the costliest effects. Set by js/main.js. */
+.lite .grain { animation: none; }
+.lite .nav.is-scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgb(8 8 8 / 0.95); }
+
+/* "Reduce motion" (also switched on by remote-desktop tools such as TeamViewer):
+   nothing slides, parallaxes or reveals, but the slow decorative loops keep turning. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; transition-delay: 0s !important; }
-  .grain { animation: none; }
-  .statement .w { opacity: 1; }
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .statement .w { opacity: 1; transition: none; }
+  .hero__name .ch > span { transform: none; transition: none; }
+  .hero__portrait picture, .halo, .hero__top, .hero__intro, .hero__quote, .hero__bar, .menu__links a { transition: none; }
+  body.is-loading .hero__portrait picture, body.is-loading .hero__top, body.is-loading .hero__intro,
+  body.is-loading .hero__quote, body.is-loading .hero__bar { opacity: 1; transform: none; }
+  body.is-loading .halo { opacity: 1; transform: translate(-50%, -50%); }
+  .grain, .hero__scroll-line::after { animation: none; }
+  .ouroboros { animation-duration: 60s; }
+  .halo__ring { animation-duration: 300s; }
 }

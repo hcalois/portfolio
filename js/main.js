@@ -11,6 +11,11 @@ const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&
 const pick = (v, l = lang) => (v && typeof v === 'object' && !Array.isArray(v) ? v[l] ?? v.pt : v);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const desktop = matchMedia('(min-width: 1025px)');
+// weak hardware or data saver: skip the costliest effects (grain animation, parallax, blur, star density)
+const lite = (navigator.hardwareConcurrency || 8) <= 2 || (navigator.deviceMemory || 8) <= 2 || !!navigator.connection?.saveData;
+if (lite) document.documentElement.classList.add('lite');
+// Safari < 14 only knows the old MediaQueryList.addListener
+const onMedia = (mq, fn) => (mq.addEventListener ? mq.addEventListener('change', fn) : mq.addListener(fn));
 const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 const store = {
   get: (k, s = localStorage) => { try { return s.getItem(k); } catch { return null; } },
@@ -71,7 +76,7 @@ function applyLang(next, { initial = false } = {}) {
   splitStatement();
   observeReveals(document, initial);
   trackJourney();
-  if (!initial) { store.set('lang', lang); requestUpdate(); }
+  if (!initial) { store.set('lang', lang); measure(); requestUpdate(); }
 }
 
 /* ----------------------------------------------------------------- links */
@@ -282,6 +287,14 @@ function fitName() {
     const perPx = box.height / 100; // name block height per px of font size
     const room = portrait * (1 - CHIN) - barH;
     size = Math.min(size, room / Math.max(0.4, perPx - 0.1));
+
+    // ...and keep the whole poster inside the window: the intro text and the bar get their room first
+    const heroCS = getComputedStyle($('.hero'));
+    const midCS = getComputedStyle($('.hero__mid'));
+    const tallest = Math.max($('.hero__intro').offsetHeight, $('.hero__quote').offsetHeight);
+    const used = parseFloat(heroCS.paddingTop) + $('.hero__top').offsetHeight
+      + parseFloat(midCS.paddingTop) + tallest + parseFloat(midCS.paddingBottom) + barH;
+    size = Math.min(size, (innerHeight - used - 6) / perPx);
   }
   el.style.fontSize = `${Math.max(40, size)}px`;
 }
@@ -380,6 +393,21 @@ let idle;
 let ticking = false;
 function requestUpdate() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
 
+// Geometry is measured once (and again on resize / re-render), so the scroll handler
+// only does arithmetic on scrollY and never forces a layout in the middle of a frame.
+const G = { stTop: 0, stH: 0, gridTop: 0, gridH: 0, pics: [], halo: null, boulder: null, labels: [] };
+function measure() {
+  const top = (el) => el.getBoundingClientRect().top + scrollY;
+  const st = $('[data-statement]');
+  const grid = $('.manifesto__grid');
+  if (st) { G.stTop = top(st); G.stH = st.offsetHeight; }
+  if (grid) { G.gridTop = top(grid); G.gridH = grid.offsetHeight; }
+  G.pics = $$('.hero__portrait picture');
+  G.halo = $('.halo');
+  G.boulder = $('[data-boulder]');
+  G.labels = $$('.slope-label');
+}
+
 function update() {
   ticking = false;
   const vh = innerHeight;
@@ -393,19 +421,16 @@ function update() {
   clearTimeout(idle);
   idle = setTimeout(() => nav.classList.remove('is-hidden'), 900);
 
-  // hero parallax
-  if (!reduced && y < vh * 1.3) {
-    const pic = $$('.hero__portrait picture');
-    pic.forEach((p) => { p.style.translate = `0 ${(y * 0.1).toFixed(1)}px`; });
-    const halo = $('.halo');
-    if (halo) halo.style.rotate = `${(y * 0.04).toFixed(2)}deg`;
+  // hero parallax — composited properties only
+  if (!reduced && !lite && y < vh * 1.3) {
+    const shift = `0 ${(y * 0.1).toFixed(1)}px`;
+    G.pics.forEach((p) => { p.style.translate = shift; });
+    if (G.halo) G.halo.style.rotate = `${(y * 0.04).toFixed(2)}deg`;
   }
 
   // statement lights up word by word
-  const st = $('[data-statement]');
-  if (st && words.length) {
-    const r = st.getBoundingClientRect();
-    const p = reduced ? 1 : clamp((vh * 0.86 - r.top) / (r.height + vh * 0.32), 0, 1);
+  if (words.length) {
+    const p = reduced ? 1 : clamp((vh * 0.86 - (G.stTop - y)) / (G.stH + vh * 0.32), 0, 1);
     const lit = Math.round(p * words.length);
     if (lit !== lastLit) {
       words.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
@@ -413,18 +438,23 @@ function update() {
     }
   }
 
-  // Sisyphus pushes the boulder as you read
-  const grid = $('.manifesto__grid');
-  const boulder = $('[data-boulder]');
-  if (grid && boulder) {
-    const r = grid.getBoundingClientRect();
-    const p = clamp((vh * 0.82 - r.top) / Math.max(1, r.height - vh * 0.25), 0, 1);
+  // Sisyphus pushes the boulder as you read (only while the figure is around)
+  const gTop = G.gridTop - y;
+  if (G.boulder && G.gridH && gTop < vh * 1.2 && gTop + G.gridH > -vh * 0.2) {
+    const p = clamp((vh * 0.82 - gTop) / Math.max(1, G.gridH - vh * 0.25), 0, 1);
     const s = 28 + p * (S.len - 70);
     const x = S.A[0] + S.u[0] * s + S.n[0] * S.r;
     const yy = S.A[1] + S.u[1] * s + S.n[1] * S.r;
-    boulder.setAttribute('transform', `translate(${x.toFixed(1)} ${yy.toFixed(1)}) rotate(${((s / S.r) * 57.2958).toFixed(1)})`);
-    $$('.slope-label').forEach((t) => t.classList.toggle('is-passed', p >= Number(t.dataset.at)));
+    G.boulder.setAttribute('transform', `translate(${x.toFixed(1)} ${yy.toFixed(1)}) rotate(${((s / S.r) * 57.2958).toFixed(1)})`);
+    G.labels.forEach((t) => t.classList.toggle('is-passed', p >= Number(t.dataset.at)));
   }
+}
+
+// the colour portrait only shows on hover, so only hover-capable screens download it, on first approach
+function lazyColour() {
+  const img = $('.hero__img--color');
+  if (!img || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  $('.hero').addEventListener('pointerenter', () => { if (!img.getAttribute('src')) img.src = img.dataset.src; }, { once: true });
 }
 
 /* ----------------------------------------------------- journey tracking */
@@ -881,7 +911,7 @@ function starfield() {
     cv.width = Math.round(w * dpr);
     cv.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const n = Math.round((w * h) / 4200);
+    const n = Math.round((w * h) / (lite ? 9000 : 4200));
     pts = Array.from({ length: n }, () => ({
       x: Math.random() * w, y: Math.random() * h,
       r: Math.random() ** 3 * 1.3 + 0.3,
@@ -897,7 +927,7 @@ function starfield() {
     ctx.clearRect(0, 0, w, h);
     ctx.fillStyle = '#ece8de';
     for (const s of pts) {
-      const tw = reduced ? 1 : 0.55 + 0.45 * Math.sin(t * 0.001 * s.s + s.p);
+      const tw = 0.55 + 0.45 * Math.sin(t * 0.001 * s.s + s.p);
       ctx.globalAlpha = s.a * tw;
       ctx.beginPath();
       ctx.arc(s.x + mx * s.z * 16, s.y + my * s.z * 10, s.r, 0, Math.PI * 2);
@@ -924,24 +954,30 @@ function starfield() {
     ctx.globalAlpha = 1;
   };
 
+  // slow twinkle is ambient and stays on with "reduce motion"; shooting stars and parallax do not
   let last = 0;
+  let lastFrame = 0;
+  const frameGap = lite ? 33 : 0; // ~30 fps on weak hardware
   const loop = (t) => {
     if (!running) return;
-    if (!shoot && t - last > nextShoot) {
+    requestAnimationFrame(loop);
+    if (t - lastFrame < frameGap) return;
+    lastFrame = t;
+    if (!reduced && !shoot && t - last > nextShoot) {
       last = t;
       nextShoot = 5000 + Math.random() * 7000;
       shoot = { t0: t, x: Math.random() * w * 0.7 + w * 0.2, y: Math.random() * h * 0.4, dx: -(220 + Math.random() * 200), dy: 120 + Math.random() * 80 };
     }
     draw(t);
-    requestAnimationFrame(loop);
   };
 
-  new ResizeObserver(resize).observe(cv);
-  if (reduced) return;
+  if ('ResizeObserver' in window) new ResizeObserver(resize).observe(cv);
+  else { resize(); addEventListener('resize', resize); }
   new IntersectionObserver(([e]) => {
     running = e.isIntersecting;
     if (running) requestAnimationFrame(loop);
   }).observe(cv);
+  if (reduced) return;
   cv.parentElement.addEventListener('pointermove', (e) => {
     mx = (e.clientX / innerWidth) * 2 - 1;
     my = (e.clientY / innerHeight) * 2 - 1;
@@ -972,11 +1008,17 @@ function boot() {
   $$('[data-lang-btn]').forEach((b) => b.addEventListener('click', () => { if (b.dataset.langBtn !== lang) applyLang(b.dataset.langBtn); }));
   $$('[data-copy-email]').forEach((b) => b.addEventListener('click', copyEmail));
 
+  lazyColour();
+
+  const relayout = () => { fitName(); measure(); requestUpdate(); };
   addEventListener('scroll', requestUpdate, { passive: true });
-  addEventListener('resize', () => { fitName(); requestUpdate(); });
-  desktop.addEventListener('change', trackJourney);
-  stackedHero.addEventListener('change', fitName);
-  document.fonts?.ready.then(fitName);
+  addEventListener('resize', relayout);
+  addEventListener('load', relayout);
+  onMedia(desktop, trackJourney);
+  onMedia(stackedHero, relayout);
+  document.fonts?.ready.then(relayout);
+  if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); requestUpdate(); }).observe($('main'));
+  measure();
   update();
 
   console.log('%cHenrique Valois', 'font: 300 26px "Cormorant Garamond", Georgia, serif; color:#ece8de; background:#080808; padding:10px 14px;');

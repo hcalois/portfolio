@@ -27,7 +27,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geist:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="preload" as="image" href="/assets/img/henrique-mono-1600.webp" media="(min-width: 761px)">
   <link rel="preload" as="image" href="/assets/img/henrique-mono-900.webp" media="(max-width: 760px)">
   <link rel="stylesheet" href="/css/style.css">
@@ -128,17 +128,10 @@
       <figure class="hero__portrait" data-portrait>
         <div class="halo" aria-hidden="true">
           <svg class="halo__svg" viewBox="0 0 1000 1000">
-            <defs>
-              <path id="halo-path" d="M500,500 m-454,0 a454,454 0 1,1 908,0 a454,454 0 1,1 -908,0"/>
-            </defs>
             <circle class="halo__line" cx="500" cy="500" r="494"/>
             <circle class="halo__line halo__line--faint" cx="500" cy="500" r="420"/>
             <circle class="halo__ticks" cx="500" cy="500" r="420"/>
             <circle class="halo__ticks halo__ticks--major" cx="500" cy="500" r="420"/>
-            <circle class="halo__line halo__line--faint" cx="500" cy="500" r="300"/>
-            <g class="halo__spin">
-              <text class="halo__text"><textPath href="#halo-path" textLength="2820" lengthAdjust="spacing">QVOD EST SVPERIVS EST SICVT QVOD INFERIVS · ET QVOD EST INFERIVS EST SICVT QVOD EST SVPERIVS · SOLVE ET COAGVLA ·</textPath></text>
-            </g>
             <g class="halo__glyphs">
               <g transform="translate(500 6)"><circle r="20"/><use href="#el-fire" x="-11" y="-11" width="22" height="22"/></g>
               <g transform="translate(994 500)"><circle r="20"/><use href="#el-air" x="-11" y="-11" width="22" height="22"/></g>
@@ -146,16 +139,20 @@
               <g transform="translate(6 500)"><circle r="20"/><use href="#el-earth" x="-11" y="-11" width="22" height="22"/></g>
             </g>
           </svg>
+          <div class="halo__ring">
+            <svg viewBox="0 0 1000 1000">
+              <defs><path id="halo-path" d="M500,500 m-454,0 a454,454 0 1,1 908,0 a454,454 0 1,1 -908,0"/></defs>
+              <text class="halo__text"><textPath href="#halo-path" textLength="2820" lengthAdjust="spacing">QVOD EST SVPERIVS EST SICVT QVOD INFERIVS · ET QVOD EST INFERIVS EST SICVT QVOD EST SVPERIVS · SOLVE ET COAGVLA ·</textPath></text>
+            </svg>
+          </div>
           <div class="ouroboros"><div class="ouroboros__body"></div><div class="ouroboros__arm"><span class="ouroboros__head"></span></div></div>
         </div>
         <picture>
           <source media="(max-width: 760px)" srcset="/assets/img/henrique-mono-900.webp">
           <img class="hero__img hero__img--mono" src="/assets/img/henrique-mono-1600.webp" width="1391" height="1600" alt="Retrato de Henrique Valois" data-i18n-attr="alt:hero.alt" fetchpriority="high">
         </picture>
-        <picture>
-          <source media="(max-width: 760px)" srcset="/assets/img/henrique-color-900.webp">
-          <img class="hero__img hero__img--color" src="/assets/img/henrique-color-1600.webp" width="1391" height="1600" alt="" loading="lazy">
-        </picture>
+        <!-- colour version only reveals on hover, so it is fetched by main.js on hover-capable screens -->
+        <img class="hero__img hero__img--color" data-src="/assets/img/henrique-color-1600.webp" width="1391" height="1600" alt="" aria-hidden="true">
       </figure>
 
       <div class="wrap hero__top">
