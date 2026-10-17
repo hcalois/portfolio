@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="meta.title">Henrique Valois — Engenheiro de Software Jr.</title>
+  <meta name="description" data-i18n-content="meta.desc" content="Engenheiro de software júnior construindo sistemas web seguros, automações e integrações com IA usando React, Next.js, TypeScript e Supabase. Estudando Java e AWS.">
+  <meta name="author" content="Carlos Henrique Valois dos Santos">
+  <meta name="theme-color" content="#080808">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://henrique-valois.vercel.app/">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://henrique-valois.vercel.app/">
+  <meta property="og:title" content="Henrique Valois — Engenheiro de Software Jr.">
+  <meta property="og:description" content="Sistemas web seguros, automações e IA. React · Next.js · TypeScript · Supabase · n8n.">
+  <meta property="og:image" content="https://henrique-valois.vercel.app/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Henrique Valois — Engenheiro de Software Jr.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geist:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="preload" as="image" href="/assets/img/henrique-mono-1600.webp" media="(min-width: 761px)">
+  <link rel="preload" as="image" href="/assets/img/henrique-mono-900.webp" media="(max-width: 760px)">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carlos Henrique Valois dos Santos",
+    "alternateName": "Henrique Valois",
+    "jobTitle": "Desenvolvedor de Software Júnior",
+    "worksFor": { "@type": "Organization", "name": "Grupo Sing" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Capim Grosso", "addressRegion": "BA", "addressCountry": "BR" },
+    "url": "https://henrique-valois.vercel.app/",
+    "image": "https://henrique-valois.vercel.app/assets/og.jpg",
+    "sameAs": ["https://www.linkedin.com/in/henriquesoftware", "https://github.com/hcalois", "https://www.instagram.com/thishenrique_is/"],
+    "knowsLanguage": ["pt-BR", "en"],
+    "knowsAbout": ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "Row Level Security", "n8n", "REST APIs", "Java", "AWS"]
+  }
+  </script>
+</head>
+<body class="is-loading">
+  <a class="skip" href="#main" data-i18n="skip">Pular para o conteúdo</a>
+
+  <!-- alchemical element glyphs -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="el-fire" viewBox="0 0 24 24"><path d="M12 3.5 21 19.5H3Z"/></symbol>
+    <symbol id="el-water" viewBox="0 0 24 24"><path d="M3 4.5h18L12 20.5Z"/></symbol>
+    <symbol id="el-air" viewBox="0 0 24 24"><path d="M12 3.5 21 19.5H3Z"/><path d="M4.5 13.2h15"/></symbol>
+    <symbol id="el-earth" viewBox="0 0 24 24"><path d="M3 4.5h18L12 20.5Z"/><path d="M4.5 10.8h15"/></symbol>
+    <symbol id="ouro" viewBox="0 0 32 32"><path d="M16 3.5a12.5 12.5 0 1 1-10.9 6.4"/><circle cx="7.6" cy="7.2" r="1.9" class="fill"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3Z"/></symbol>
+  </svg>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="rules" aria-hidden="true"><div class="wrap"><span></span><span></span><span></span><span></span></div></div>
+
+  <div class="loader" aria-hidden="true">
+    <div class="loader__ring"><span></span></div>
+    <p class="loader__count mono"><span data-count>000</span></p>
+    <p class="loader__motto">Solve et coagula</p>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" data-nav>
+    <div class="wrap nav__inner">
+      <a class="nav__brand" href="#top" aria-label="Henrique Valois — início">
+        <svg class="nav__mark" aria-hidden="true"><use href="#ouro"/></svg>
+        <span class="nav__name">Henrique Valois</span>
+      </a>
+      <nav class="nav__links" aria-label="Seções">
+        <a href="#manifesto" data-section-link="manifesto"><span class="num">I</span><span data-i18n="nav.manifesto">Manifesto</span></a>
+        <a href="#arsenal" data-section-link="arsenal"><span class="num">II</span><span data-i18n="nav.arsenal">Arsenal</span></a>
+        <a href="#jornada" data-section-link="jornada"><span class="num">III</span><span data-i18n="nav.journey">Jornada</span></a>
+        <a href="#opus" data-section-link="opus"><span class="num">IV</span><span data-i18n="nav.opus">Opus</span></a>
+        <a href="#contato" data-section-link="contato"><span class="num">V</span><span data-i18n="nav.contact">Contato</span></a>
+      </nav>
+      <div class="nav__tools">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang__btn" data-lang-btn="pt" aria-pressed="true">PT</button>
+          <span class="lang__sep" aria-hidden="true">/</span>
+          <button type="button" class="lang__btn" data-lang-btn="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="kbd-btn" data-palette-open data-i18n-attr="aria-label:nav.cmd" aria-label="Abrir paleta de comandos"><kbd data-mod>Ctrl</kbd><kbd>K</kbd></button>
+        <a class="btn btn--sm" data-cv-link href="/assets/cv/Curriculo-Henrique-Valois.pdf" download><span data-i18n="nav.cv">Currículo</span><span class="arrow" aria-hidden="true">↓</span></a>
+        <button type="button" class="nav__menu-btn" data-menu-open aria-expanded="false" aria-controls="menu"><span data-i18n="nav.menu">Menu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" data-menu hidden>
+    <div class="wrap menu__inner">
+      <button type="button" class="menu__close" data-menu-close><span data-i18n="nav.close">Fechar</span> ✕</button>
+      <nav class="menu__links" aria-label="Seções">
+        <a href="#manifesto" data-menu-link><span class="num">I</span><span data-i18n="nav.manifesto">Manifesto</span></a>
+        <a href="#arsenal" data-menu-link><span class="num">II</span><span data-i18n="nav.arsenal">Arsenal</span></a>
+        <a href="#jornada" data-menu-link><span class="num">III</span><span data-i18n="nav.journey">Jornada</span></a>
+        <a href="#opus" data-menu-link><span class="num">IV</span><span data-i18n="nav.opus">Opus</span></a>
+        <a href="#contato" data-menu-link><span class="num">V</span><span data-i18n="nav.contact">Contato</span></a>
+      </nav>
+      <div class="menu__foot">
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang__btn" data-lang-btn="pt" aria-pressed="true">PT</button>
+          <span class="lang__sep" aria-hidden="true">/</span>
+          <button type="button" class="lang__btn" data-lang-btn="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn" data-cv-link href="/assets/cv/Curriculo-Henrique-Valois.pdf" download><span data-i18n="nav.cv">Currículo</span><span class="arrow" aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-label="Henrique Valois">
+      <div class="hero__light" aria-hidden="true"></div>
+
+      <figure class="hero__portrait" data-portrait>
+        <div class="halo" aria-hidden="true">
+          <svg class="halo__svg" viewBox="0 0 1000 1000">
+            <defs>
+              <path id="halo-path" d="M500,500 m-454,0 a454,454 0 1,1 908,0 a454,454 0 1,1 -908,0"/>
+            </defs>
+            <circle class="halo__line" cx="500" cy="500" r="494"/>
+            <circle class="halo__line halo__line--faint" cx="500" cy="500" r="420"/>
+            <circle class="halo__ticks" cx="500" cy="500" r="420"/>
+            <circle class="halo__ticks halo__ticks--major" cx="500" cy="500" r="420"/>
+            <circle class="halo__line halo__line--faint" cx="500" cy="500" r="300"/>
+            <g class="halo__spin">
+              <text class="halo__text"><textPath href="#halo-path" textLength="2820" lengthAdjust="spacing">QVOD EST SVPERIVS EST SICVT QVOD INFERIVS · ET QVOD EST INFERIVS EST SICVT QVOD EST SVPERIVS · SOLVE ET COAGVLA ·</textPath></text>
+            </g>
+            <g class="halo__glyphs">
+              <g transform="translate(500 6)"><circle r="20"/><use href="#el-fire" x="-11" y="-11" width="22" height="22"/></g>
+              <g transform="translate(994 500)"><circle r="20"/><use href="#el-air" x="-11" y="-11" width="22" height="22"/></g>
+              <g transform="translate(500 994)"><circle r="20"/><use href="#el-water" x="-11" y="-11" width="22" height="22"/></g>
+              <g transform="translate(6 500)"><circle r="20"/><use href="#el-earth" x="-11" y="-11" width="22" height="22"/></g>
+            </g>
+          </svg>
+          <div class="ouroboros"><div class="ouroboros__body"></div><div class="ouroboros__arm"><span class="ouroboros__head"></span></div></div>
+        </div>
+        <picture>
+          <source media="(max-width: 760px)" srcset="/assets/img/henrique-mono-900.webp">
+          <img class="hero__img hero__img--mono" src="/assets/img/henrique-mono-1600.webp" width="1391" height="1600" alt="Retrato de Henrique Valois" data-i18n-attr="alt:hero.alt" fetchpriority="high">
+        </picture>
+        <picture>
+          <source media="(max-width: 760px)" srcset="/assets/img/henrique-color-900.webp">
+          <img class="hero__img hero__img--color" src="/assets/img/henrique-color-1600.webp" width="1391" height="1600" alt="" loading="lazy">
+        </picture>
+      </figure>
+
+      <div class="wrap hero__top">
+        <p class="hero__edition mono"><span data-i18n="hero.edition">Portfólio — MMXXVI</span><br><span class="dim">Carlos Henrique Valois dos Santos</span></p>
+        <div class="hero__status mono">
+          <p class="status"><span class="status__dot" aria-hidden="true"></span><span data-i18n="hero.status">Disponível para novas oportunidades</span></p>
+          <p class="dim">Capim Grosso, BA — <span data-clock>--:--</span> BRT</p>
+        </div>
+      </div>
+
+      <div class="wrap hero__mid">
+        <div class="hero__intro">
+          <p class="hero__role" data-i18n="hero.role">Engenheiro de<br>Software <em>Jr.</em></p>
+          <p class="hero__focus mono" data-i18n="hero.focus">Full-stack · Automação · IA</p>
+          <p class="hero__tagline" data-i18n="hero.tagline">Construo sistemas web seguros e automações que trabalham sozinhas, do banco de dados à interface. Próximo passo: software na escala de milhões.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--solid" data-wa-link href="https://wa.me/5574991149492" target="_blank" rel="noopener"><span data-i18n="hero.cta1">Falar no WhatsApp</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="btn" data-cv-link href="/assets/cv/Curriculo-Henrique-Valois.pdf" download><span data-i18n="hero.cta2">Baixar currículo</span><span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="btn btn--icon" data-li-link href="https://www.linkedin.com/in/henriquesoftware" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+            <a class="btn btn--icon" data-gh-link href="https://github.com/hcalois" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg aria-hidden="true"><use href="#i-github"/></svg></a>
+          </div>
+        </div>
+        <blockquote class="hero__quote">
+          <p class="hero__quote-la" lang="la">Quod est superius est sicut quod inferius.</p>
+          <p class="hero__quote-tr" data-i18n="hero.quoteTr">O que está em cima é como o que está embaixo — da interface ao banco de dados.</p>
+          <footer class="mono dim" data-i18n="hero.quoteSrc">Tábua de Esmeralda · Hermes Trismegisto</footer>
+        </blockquote>
+      </div>
+
+      <div class="hero__name-wrap">
+        <h1 class="hero__name" data-fit aria-label="Henrique Valois">HENRIQUE</h1>
+      </div>
+
+      <div class="wrap hero__bar mono">
+        <a href="#manifesto" class="hero__scroll"><span class="hero__scroll-line" aria-hidden="true"></span><span data-i18n="hero.scroll">Role para descer</span></a>
+        <span class="hide-sm">Dev Jr. @ Grupo Sing</span>
+        <span class="hide-sm" data-i18n="hero.edu">ADS · AGES</span>
+        <button type="button" class="hero__cmd" data-palette-open><kbd data-mod>Ctrl</kbd><kbd>K</kbd> <span data-i18n="hero.cmd">comandos</span></button>
+      </div>
+    </section>
+
+    <!-- ============ I. MANIFESTO ============ -->
+    <section class="section manifesto" id="manifesto" data-section>
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__num">I</span>
+          <h2 class="sec-head__title" data-i18n="nav.manifesto">Manifesto</h2>
+          <span class="sec-head__rule" aria-hidden="true"></span>
+          <span class="sec-head__ref" data-i18n="s1.ref">Sísifo · Albert Camus, 1942</span>
+        </header>
+
+        <p class="statement" data-statement data-i18n="s1.statement">É preciso imaginar <em>Sísifo feliz.</em> Todo dia eu empurro a pedra — um bug, uma query, um deploy — e no dia seguinte empurro de novo, um pouco mais longe.</p>
+
+        <div class="manifesto__grid">
+          <figure class="figure sisyphus" data-reveal data-sisyphus>
+            <svg viewBox="0 0 640 400" role="img" aria-label="Uma pedra empurrada encosta acima: commit, review, build, deploy.">
+              <defs>
+                <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+                  <line x1="0" y1="0" x2="0" y2="7" class="hatch"/>
+                </pattern>
+              </defs>
+              <polygon points="0,384 40,362 600,70 640,70 640,400 0,400" fill="url(#hatch)"/>
+              <polyline points="0,384 40,362 600,70 640,70" class="ground"/>
+              <g class="slope-marks" data-slope-marks></g>
+              <g class="summit">
+                <line x1="600" y1="70" x2="600" y2="22" class="ground"/>
+                <path d="M600 22h26l-6 7 6 7h-26z" class="flag"/>
+                <text x="600" y="12" class="label" text-anchor="middle">prod</text>
+              </g>
+              <g data-boulder>
+                <circle r="30" class="boulder"/>
+                <g class="boulder__lines">
+                  <path d="M-21 -21 Q0 -6 21 -21"/>
+                  <path d="M-26 8 Q-4 2 6 28"/>
+                  <path d="M10 -6 Q18 6 27 4"/>
+                </g>
+              </g>
+              <text x="40" y="392" class="label again" data-i18n="s1.again">↺ e amanhã, de novo</text>
+            </svg>
+            <figcaption class="figure__cap" data-i18n="s1.fig1"><span>Fig. 1</span> Sísifo, ou o ciclo de entrega.</figcaption>
+          </figure>
+
+          <div class="manifesto__text">
+            <p class="lead" data-reveal data-i18n="s1.p1">Sou <strong>Henrique Valois</strong>, desenvolvedor full-stack. Construo sistemas web de ponta a ponta — da modelagem do banco de dados à interface —, com segurança em múltiplas camadas e integrações entre plataformas como RD Station e Meta Ads. Hoje aplico isso num ERP modular que cobre os ciclos comercial, operacional e financeiro.</p>
+            <p data-reveal data-i18n="s1.p2">Antes do código em produção, passei pelo setor técnico da Capim Solar, cuidando da documentação de projetos de microgeração de energia. De lá trouxe o que mais uso hoje: rigor com processos e respeito ao detalhe.</p>
+            <p data-reveal data-i18n="s1.p3">Curso Análise e Desenvolvimento de Sistemas na AGES e estou aprofundando Java e AWS. O objetivo é claro: engenharia de software em escala — num grande banco ou numa big tech.</p>
+
+            <dl class="facts" data-reveal>
+              <div><dt data-i18n="s1.f1k">Agora</dt><dd data-i18n="s1.f1v">Dev Jr. @ Grupo Sing</dd></div>
+              <div><dt data-i18n="s1.f2k">Stack</dt><dd>Next.js · React · TypeScript · Supabase</dd></div>
+              <div><dt data-i18n="s1.f3k">Formação</dt><dd data-i18n="s1.f3v">ADS — AGES · 2028</dd></div>
+              <div><dt data-i18n="s1.f4k">Base</dt><dd>Capim Grosso, BA</dd></div>
+            </dl>
+
+            <figure class="figure term" data-reveal data-terminal>
+              <div class="term__bar mono"><span>~/henrique — zsh</span><span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <div class="term__body" data-term-body>
+                <div class="term__out" data-term-out aria-live="polite"></div>
+                <form class="term__line" data-term-form autocomplete="off">
+                  <label class="term__prompt mono" for="term-input">henrique@portfolio:~$</label>
+                  <input id="term-input" class="term__input mono" data-term-input type="text" spellcheck="false" autocapitalize="off" data-i18n-attr="aria-label:s1.termLabel" aria-label="Comando do terminal">
+                </form>
+              </div>
+              <figcaption class="figure__cap" data-i18n="s1.fig2"><span>Fig. 2</span> whoami — digite <kbd>help</kbd>.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ II. ARSENAL ============ -->
+    <section class="section arsenal" id="arsenal" data-section>
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__num">II</span>
+          <h2 class="sec-head__title" data-i18n="nav.arsenal">Arsenal</h2>
+          <span class="sec-head__rule" aria-hidden="true"></span>
+          <span class="sec-head__ref" data-i18n="s2.ref">Tábua de Esmeralda · Hermes Trismegisto</span>
+        </header>
+        <div class="sec-intro">
+          <p class="display" data-reveal data-i18n="s2.title">Quatro elementos,<br><em>uma obra.</em></p>
+          <p class="sec-intro__lede" data-reveal data-i18n="s2.lede">A alquimia virou química, e a química virou tabela. Esta é a minha: os elementos com que transformo problema em produto.</p>
+        </div>
+        <div class="elements" data-arsenal></div>
+      </div>
+    </section>
+
+    <!-- ============ III. JORNADA ============ -->
+    <section class="section journey" id="jornada" data-section>
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__num">III</span>
+          <h2 class="sec-head__title" data-i18n="nav.journey">Jornada</h2>
+          <span class="sec-head__rule" aria-hidden="true"></span>
+          <span class="sec-head__ref" data-i18n="s3.ref">Divina Comédia · Dante Alighieri</span>
+        </header>
+        <div class="sec-intro">
+          <p class="display" data-reveal data-i18n="s3.title"><em>Nel mezzo del cammin</em><br>di nostra vita…</p>
+          <p class="sec-intro__lede" data-reveal data-i18n="s3.lede">Toda carreira é uma travessia. A minha tem três atos e nove círculos — da primeira linha de código até as estrelas.</p>
+        </div>
+
+        <div class="journey__grid">
+          <figure class="figure circles" aria-hidden="true">
+            <div class="circles__sticky">
+              <svg viewBox="0 0 900 900" data-circles></svg>
+              <figcaption class="figure__cap" data-i18n="s3.fig"><span>Fig. 3</span> Os nove círculos da jornada.</figcaption>
+            </div>
+          </figure>
+          <ol class="steps" data-journey></ol>
+        </div>
+        <p class="journey__end" data-reveal><span lang="it">E quindi uscimmo a riveder le stelle.</span><br><span class="dim" data-i18n="s3.end">E então saímos para rever as estrelas.</span></p>
+      </div>
+    </section>
+
+    <!-- ============ IV. OPUS ============ -->
+    <section class="section opus" id="opus" data-section>
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__num">IV</span>
+          <h2 class="sec-head__title" data-i18n="nav.opus">Opus</h2>
+          <span class="sec-head__rule" aria-hidden="true"></span>
+          <span class="sec-head__ref" data-i18n="s4.ref">Magnum Opus · os quatro estágios da alquimia</span>
+        </header>
+        <div class="sec-intro">
+          <p class="display" data-reveal data-i18n="s4.title">Toda obra passa por<br><em>quatro estágios.</em></p>
+          <p class="sec-intro__lede" data-reveal data-i18n="s4.lede">Os alquimistas chamavam de Grande Obra: da matéria bruta ao ouro. Classifico meus projetos do mesmo jeito.</p>
+        </div>
+        <ul class="stages mono" data-stages data-reveal></ul>
+        <ol class="works" data-opus></ol>
+        <a class="more-link" data-gh-link href="https://github.com/hcalois" target="_blank" rel="noopener" data-reveal><span data-i18n="s4.more">Mais no GitHub</span> <span class="mono dim">@hcalois</span><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <!-- ============ V. CONTATO ============ -->
+    <section class="section contact" id="contato" data-section>
+      <canvas class="stars" data-stars aria-hidden="true"></canvas>
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <span class="sec-head__num">V</span>
+          <h2 class="sec-head__title" data-i18n="nav.contact">Contato</h2>
+          <span class="sec-head__rule" aria-hidden="true"></span>
+          <span class="sec-head__ref" data-i18n="s5.ref">Divina Comédia · Dante Alighieri</span>
+        </header>
+        <p class="contact__title" data-reveal data-i18n="s5.title">Vamos construir<br>algo <em>que dure.</em></p>
+        <div class="contact__grid">
+          <div class="contact__lead">
+            <p data-reveal data-i18n="s5.lede">Aberto a vagas de desenvolvedor júnior e estágio em engenharia de software. Respondo rápido, de preferência pelo WhatsApp.</p>
+            <div class="mail" data-reveal>
+              <span class="mail__label mono dim" data-i18n="s5.mail">E-mail</span>
+              <a class="mail__addr" data-email-link href="#">—</a>
+              <button type="button" class="mail__copy mono" data-copy-email>Copiar</button>
+            </div>
+          </div>
+          <ul class="channels" data-channels></ul>
+        </div>
+      </div>
+
+      <footer class="foot">
+        <div class="wrap foot__inner mono">
+          <span>© MMXXVI Henrique Valois</span>
+          <span class="dim" data-i18n="foot.made">Feito à mão — sem frameworks, com café e filosofia.</span>
+          <a href="#top" class="foot__top"><svg aria-hidden="true"><use href="#ouro"/></svg><span data-i18n="foot.top">O fim é o começo</span></a>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <dialog class="palette" data-palette aria-label="Paleta de comandos">
+    <form method="dialog" class="palette__form" data-palette-form>
+      <div class="palette__search">
+        <span class="mono dim" aria-hidden="true">❯</span>
+        <input class="palette__input" data-palette-input type="text" placeholder="Digite um comando ou busque…" data-i18n-attr="placeholder:pal.placeholder" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+      </div>
+      <ul class="palette__list" id="palette-list" role="listbox" data-palette-list></ul>
+      <p class="palette__hint mono dim" data-i18n="pal.hint"><kbd>↑</kbd><kbd>↓</kbd> navegar <kbd>↵</kbd> executar <kbd>esc</kbd> fechar</p>
+    </form>
+  </dialog>
+
+  <div class="toast mono" data-toast role="status" aria-live="polite"></div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

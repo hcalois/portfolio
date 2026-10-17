@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-tools",
+  "private": true,
+  "type": "module",
+  "description": "Scripts de apoio do portfólio: recorte do retrato, imagens e servidor local.",
+  "dependencies": {
+    "sharp": "0.34.4"
+  }
+}

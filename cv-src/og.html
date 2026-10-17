@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>og</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@400;500&display=block">
+  <style>
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #080808; }
+    body { position: relative; color: #ece8de; font-family: 'Cormorant Garamond', serif; }
+    .light { position: absolute; inset: 0; background: radial-gradient(ellipse 38% 60% at 76% 42%, rgb(236 232 222 / 0.09), transparent 70%); }
+    .rule { position: absolute; top: 0; bottom: 0; width: 1px; background: rgb(236 232 222 / 0.05); }
+    .portrait { position: absolute; right: 40px; bottom: -40px; height: 640px; aspect-ratio: 1391 / 1600; }
+    .portrait img { position: absolute; inset: 0; width: 100%; height: 100%;
+      -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 96%); }
+    .halo { position: absolute; left: 58.2%; top: 23.7%; width: 86%; aspect-ratio: 1; transform: translate(-50%, -50%); }
+    .halo svg { width: 100%; height: 100%; overflow: visible; }
+    .ring { position: absolute; inset: 13%; border-radius: 50%;
+      background: conic-gradient(from 60deg, transparent 0deg 10deg, rgb(214 242 58 / 0.05) 40deg, rgb(214 242 58 / 0.6) 250deg, #d6f23a 330deg, transparent 330.4deg);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1.5px)); }
+    .copy { position: absolute; left: 64px; top: 58px; bottom: 54px; width: 640px; display: flex; flex-direction: column; }
+    .mono { font: 400 14px/1.6 'JetBrains Mono', monospace; letter-spacing: 0.16em; text-transform: uppercase; }
+    .dim { color: #87847c; }
+    h1 { margin: auto 0 0; font-weight: 300; font-size: 118px; line-height: 0.9; letter-spacing: -0.02em; }
+    h1 em { font-style: italic; color: #b4b0a6; }
+    .role { margin-top: 26px; font-size: 38px; font-weight: 300; }
+    .stack { margin-top: 18px; color: #d6f23a; }
+    .foot { margin-top: 40px; display: flex; gap: 28px; align-items: center; padding-top: 20px; border-top: 1px solid rgb(236 232 222 / 0.12); }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #d6f23a; margin-right: 12px; box-shadow: 0 0 14px rgb(214 242 58 / 0.6); }
+  </style>
+</head>
+<body>
+  <div class="light"></div>
+  <div class="rule" style="left: 300px"></div><div class="rule" style="left: 600px"></div><div class="rule" style="left: 900px"></div>
+  <div class="portrait">
+    <div class="halo">
+      <svg viewBox="0 0 1000 1000">
+        <circle cx="500" cy="500" r="494" fill="none" stroke="#ece8de" stroke-opacity=".3" stroke-width="2"/>
+        <circle cx="500" cy="500" r="420" fill="none" stroke="#ece8de" stroke-opacity=".32" stroke-width="12" stroke-dasharray="1.6 20.39"/>
+        <circle cx="500" cy="500" r="420" fill="none" stroke="#ece8de" stroke-opacity=".6" stroke-width="26" stroke-dasharray="3 216.9"/>
+      </svg>
+      <div class="ring"></div>
+    </div>
+    <img src="../assets/img/henrique-mono-1600.webp" alt="">
+  </div>
+  <div class="copy">
+    <p class="mono dim" style="margin:0">Portfólio — MMXXVI</p>
+    <h1>Henrique<br><em>Valois</em></h1>
+    <p class="role" style="margin-bottom:0">Engenheiro de Software Jr.</p>
+    <p class="mono stack" style="margin-bottom:0">React · Next.js · TypeScript · Supabase · n8n</p>
+    <div class="foot mono"><span><span class="dot"></span>Disponível para oportunidades</span><span class="dim">henrique-valois.vercel.app</span></div>
+  </div>
+</body>
+</html>

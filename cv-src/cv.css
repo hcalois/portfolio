@@ -1,0 +1,55 @@
+/* Currículo — A4, uma página, compatível com ATS (texto real, uma coluna). */
+@font-face { font-family: 'Lato'; font-weight: 400; font-style: normal; src: url('fonts/lato-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-weight: 400; font-style: italic; src: url('fonts/lato-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-weight: 700; font-style: normal; src: url('fonts/lato-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-weight: 900; font-style: normal; src: url('fonts/lato-latin-900-normal.woff2') format('woff2'); }
+
+@page { size: A4; margin: 0; }
+
+:root {
+  --ink: #1f2124;
+  --muted: #5f6368;
+  --accent: #2f5597;
+  --rule: #9db3d8;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  width: 210mm;
+  padding: 10.5mm 16mm 0;
+  font: 400 9.15pt/1.36 'Lato', 'Segoe UI', Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; }
+p, ul, h1, h2, h3 { margin: 0; padding: 0; }
+
+header { text-align: center; }
+h1 { font-weight: 900; font-size: 19pt; letter-spacing: 0.02em; line-height: 1.1; text-transform: uppercase; }
+.headline { margin-top: 3pt; font-size: 10pt; color: var(--accent); font-weight: 700; }
+.contact { margin-top: 4pt; font-size: 8.6pt; color: var(--muted); line-height: 1.5; }
+.contact .sep { margin: 0 5pt; color: #b5b9be; }
+
+section { margin-top: 8pt; }
+h2 {
+  font-size: 9.6pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+  padding-bottom: 2.5pt; margin-bottom: 5pt; border-bottom: 1px solid var(--rule);
+}
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+.row + .row, .entry + .entry { margin-top: 6pt; }
+.role { font-weight: 700; }
+.when { flex: none; font-size: 8.6pt; color: var(--muted); }
+.sub { font-style: italic; color: var(--muted); font-size: 8.8pt; }
+.label { font-weight: 700; }
+
+ul.bullets { margin: 2.5pt 0 0 13pt; }
+ul.bullets li { margin-top: 1.2pt; padding-left: 2pt; }
+ul.bullets li::marker { color: var(--ink); }
+
+.skills { display: grid; grid-template-columns: max-content 1fr; gap: 2.4pt 10pt; }
+.skills dt { font-weight: 700; }
+.skills dd { margin: 0; }
+.desc { margin-top: 1.5pt; }
+.sep-inline { margin: 0 8pt; color: #b5b9be; }

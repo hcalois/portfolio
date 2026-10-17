@@ -1,0 +1,6 @@
+.claude
+.env*
+.gitignore
+cv-src
+tools
+README.md

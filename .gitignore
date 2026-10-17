@@ -1,0 +1,9 @@
+# segredos e configuração local — nunca versionar
+.env*
+.vercel
+.claude
+
+# dependências e arquivos gerados
+node_modules
+tmp
+tools/og.png
