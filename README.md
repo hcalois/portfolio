@@ -1,7 +1,9 @@
 # Henrique Valois — portfólio
 
-Portfólio pessoal de **Carlos Henrique Valois dos Santos**, engenheiro de software júnior.
-Bilíngue (PT/EN), feito à mão, sem frameworks nem etapa de build.
+Portfólio pessoal de **Carlos Henrique Valois dos Santos**, engenheiro de software júnior com foco em back-end Java.
+Site estático bilíngue (PT/EN), sem frameworks.
+
+> Desenvolvido com apoio de IA generativa, com direção, curadoria e revisão minhas.
 
 **Ao vivo:** https://henrique-valois.vercel.app
 

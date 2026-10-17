@@ -34,25 +34,25 @@ export const stack = [
   {
     el: 'fire',
     name: { pt: 'Fogo', en: 'Fire' },
-    domain: { pt: 'Interface', en: 'Interface' },
-    note: { pt: 'O que o usuário vê e toca.', en: 'What people see and touch.' },
+    domain: { pt: 'Java & fundamentos', en: 'Java & fundamentals' },
+    note: { pt: 'O núcleo de tudo que construo.', en: 'The core of everything I build.' },
     items: [
-      { sym: 'Rc', name: 'React', detail: { pt: 'Componentes · hooks', en: 'Components · hooks' } },
-      { sym: 'Nx', name: 'Next.js', detail: 'App Router · Server Actions' },
-      { sym: 'Ts', name: 'TypeScript', detail: { pt: 'Tipagem ponta a ponta', en: 'End-to-end types' } },
-      { sym: 'Js', name: 'JavaScript', detail: 'ES modules · DOM' },
+      { sym: 'Jv', name: 'Java', detail: { pt: 'Linguagem principal', en: 'Main language' } },
+      { sym: 'Oo', name: { pt: 'POO', en: 'OOP' }, detail: { pt: 'Orientação a objetos', en: 'Object-oriented design' } },
+      { sym: 'Ed', name: { pt: 'Estruturas de dados', en: 'Data structures' }, detail: { pt: 'Listas · pilhas · mapas', en: 'Lists · stacks · maps' } },
+      { sym: 'Al', name: { pt: 'Algoritmos', en: 'Algorithms' }, detail: { pt: 'Lógica · complexidade', en: 'Logic · complexity' } },
     ],
   },
   {
     el: 'water',
     name: { pt: 'Água', en: 'Water' },
-    domain: { pt: 'Dados & back-end', en: 'Data & back-end' },
+    domain: { pt: 'Dados & APIs', en: 'Data & APIs' },
     note: { pt: 'O que flui por baixo de tudo.', en: 'What flows beneath everything.' },
     items: [
-      { sym: 'Sb', name: 'Supabase', detail: { pt: 'Auth · banco de dados', en: 'Auth · database' } },
-      { sym: 'Pg', name: 'PostgreSQL', detail: { pt: 'SQL · modelagem', en: 'SQL · data modeling' } },
+      { sym: 'Sq', name: 'SQL', detail: { pt: 'Consultas · modelagem', en: 'Queries · modeling' } },
+      { sym: 'Pg', name: 'PostgreSQL', detail: { pt: 'Banco relacional', en: 'Relational database' } },
       { sym: 'Ap', name: { pt: 'APIs REST', en: 'REST APIs' }, detail: { pt: 'Consumo e criação', en: 'Consume & build' } },
-      { sym: 'Jv', name: 'Java', detail: { pt: 'POO · back-end', en: 'OOP · back-end' } },
+      { sym: 'Ms', name: { pt: 'Microsserviços', en: 'Microservices' }, detail: { pt: 'Conceitos · arquitetura', en: 'Concepts · architecture' } },
     ],
   },
   {
@@ -194,7 +194,7 @@ export const projects = [
       pt: 'Sistema interno de gestão para os ciclos comercial, operacional e financeiro. Segurança de dados em quatro camadas (rotas protegidas, autenticação, autorização e Row Level Security) e integrações via API com RD Station e Meta Ads para centralizar dados comerciais.',
       en: 'Internal management system covering sales, operations and finance. Four-layer data security (protected routes, authentication, authorization and Row Level Security) and API integrations with RD Station and Meta Ads to centralize sales data.',
     },
-    tags: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL · RLS', 'REST APIs'],
+    tags: [{ pt: 'APIs REST', en: 'REST APIs' }, 'PostgreSQL · RLS', { pt: 'Segurança em camadas', en: 'Layered security' }, { pt: 'Integrações', en: 'Integrations' }],
     note: { pt: 'Código privado · corporativo', en: 'Private code · corporate' },
   },
   {
@@ -204,7 +204,7 @@ export const projects = [
       pt: 'Fluxos de integração que conectam serviços e APIs: disparo automatizado de mensagens e sincronização de leads em tempo real, eliminando trabalho manual.',
       en: 'Integration workflows connecting services and APIs: automated messaging and real-time lead sync, eliminating manual work.',
     },
-    tags: ['n8n', 'Webhooks', 'REST APIs'],
+    tags: ['n8n', 'Webhooks', { pt: 'APIs REST', en: 'REST APIs' }],
   },
   {
     title: { pt: 'Back-end & nuvem', en: 'Back-end & cloud' },
@@ -219,10 +219,10 @@ export const projects = [
     title: { pt: 'Este portfólio', en: 'This portfolio' },
     org: { pt: 'Pessoal', en: 'Personal' }, year: '2026', stage: 'rubedo',
     desc: {
-      pt: 'Feito à mão, sem frameworks: HTML, CSS e JavaScript puros, PT/EN, paleta de comandos, terminal interativo, Content Security Policy e deploy na Vercel.',
-      en: 'Handmade, no frameworks: plain HTML, CSS and JavaScript, PT/EN, command palette, interactive terminal, Content Security Policy and deployed on Vercel.',
+      pt: 'Site bilíngue (PT/EN) com paleta de comandos, terminal interativo, Content Security Policy e deploy contínuo na Vercel. Desenvolvido com apoio de IA, com direção e revisão minhas.',
+      en: 'Bilingual (PT/EN) site with a command palette, interactive terminal, Content Security Policy and continuous deployment on Vercel. Built with AI assistance, under my direction and review.',
     },
-    tags: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
+    tags: ['Vercel', 'CSP', 'i18n', { pt: 'Acessibilidade', en: 'Accessibility' }],
   },
 ];
 
@@ -267,7 +267,7 @@ export const ui = {
 
 export const en = {
   'meta.title': 'Henrique Valois — Junior Software Engineer',
-  'meta.desc': 'Junior software engineer building secure web systems, automations and AI integrations with React, Next.js, TypeScript and Supabase. Studying Java and AWS.',
+  'meta.desc': 'Junior software engineer focused on Java back-end: data structures, SQL, REST APIs and AWS, plus secure systems, integrations and AI automations.',
   skip: 'Skip to content',
   'nav.manifesto': 'Manifesto',
   'nav.arsenal': 'Arsenal',
@@ -282,8 +282,8 @@ export const en = {
   'hero.edition': 'Portfolio — MMXXVI',
   'hero.status': 'Open to new opportunities',
   'hero.role': 'Junior Software<br><em>Engineer</em>',
-  'hero.focus': 'Full-stack · Automation · AI',
-  'hero.tagline': 'I build secure web systems and automations that run on their own, from the database to the interface. Next step: software at the scale of millions.',
+  'hero.focus': 'Java back-end · Automation · AI',
+  'hero.tagline': 'I build secure systems and integrations that run on their own, from the database to the API, with Java back-end as my focus. Next step: software at the scale of millions.',
   'hero.cta1': 'Message on WhatsApp',
   'hero.cta2': 'Download résumé',
   'hero.quoteTr': 'As above, so below — from the interface down to the database.',
@@ -295,12 +295,13 @@ export const en = {
 
   's1.ref': 'Sisyphus · Albert Camus, 1942',
   's1.statement': 'One must imagine <em>Sisyphus happy.</em> Every day I push the boulder — a bug, a query, a deploy — and the next day I push it again, a little further.',
-  's1.p1': 'I’m <strong>Henrique Valois</strong>, a full-stack developer. I build web systems end to end — from database modeling to the interface — with multi-layer security and integrations across platforms like RD Station and Meta Ads. Right now I’m applying that to a modular ERP covering sales, operations and finance.',
+  's1.p1': 'I’m <strong>Henrique Valois</strong>, a developer focused on Java back-end. I like solving the problem underneath — data modeling, APIs, multi-layer security and integrations across platforms like RD Station and Meta Ads. Right now I’m applying that to a modular ERP covering sales, operations and finance.',
   's1.p2': 'Before shipping code to production, I worked on the technical team at Capim Solar, handling documentation for solar micro-generation projects. I brought back what I use most today: rigor with process and respect for detail.',
   's1.p3': 'I study Systems Analysis &amp; Development at AGES and I’m going deep on Java and AWS. The goal is clear: software engineering at scale — at a major bank or a big tech company.',
   's1.f1k': 'Now',
   's1.f1v': 'Junior Dev @ Grupo Sing',
-  's1.f2k': 'Stack',
+  's1.f2k': 'Focus',
+  's1.f2v': 'Java · SQL · REST APIs · AWS',
   's1.f3k': 'Education',
   's1.f3v': 'Systems Dev. — AGES · 2028',
   's1.f4k': 'Based in',
@@ -331,7 +332,7 @@ export const en = {
   's5.cv': 'Résumé',
   's5.cvv': 'PDF · English',
 
-  'foot.made': 'Handmade — no frameworks, with coffee and philosophy.',
+  'foot.made': 'No frameworks — with coffee, philosophy and AI.',
   'foot.top': 'The end is the beginning',
 
   'pal.placeholder': 'Type a command or search…',

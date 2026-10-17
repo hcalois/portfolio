@@ -71,7 +71,7 @@ function header() {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">
 <title id="t">Henrique Valois — Engenheiro de Software Jr.</title>
-<desc id="d">Full-stack, automação e IA. Java, React, Next.js, Supabase e n8n. Disponível para oportunidades.</desc>
+<desc id="d">Back-end Java: orientação a objetos, SQL, APIs REST e AWS. Disponível para oportunidades.</desc>
 <style>
 ${fontFace('CG', 300, 'normal', font('cormorant-garamond-latin-300-normal.woff2'))}
 ${fontFace('CG', 300, 'italic', font('cormorant-garamond-latin-300-italic.woff2'))}
@@ -125,7 +125,7 @@ ${fontFace('JBM', 500, 'normal', font('jetbrains-mono-latin-500-normal.woff2'))}
   <text class="serif rise d1" x="44" y="142" font-size="80" letter-spacing="-1" fill="${C.fg}">Henrique</text>
   <text class="serif rise d2" x="44" y="214" font-size="80" letter-spacing="-1" fill="${C.fg2}" font-style="italic">Valois</text>
   <text class="serif rise d3" x="48" y="258" font-size="27" fill="${C.fg}">Engenheiro de Software <tspan font-style="italic" fill="${C.fg2}">Jr.</tspan></text>
-  <text class="mono rise d4" x="48" y="287" font-size="11" letter-spacing="2" fill="${C.acid}" font-weight="500">JAVA · REACT · NEXT.JS · SUPABASE · N8N</text>
+  <text class="mono rise d4" x="48" y="287" font-size="11" letter-spacing="2" fill="${C.acid}" font-weight="500">JAVA · POO · SQL · APIS REST · AWS</text>
   <g class="rise d5">
     <circle cx="53" cy="314" r="3.6" fill="${C.acid}"/>
     <circle class="pulse" cx="53" cy="314" r="6" fill="none" stroke="${C.acid}"/>
@@ -141,8 +141,8 @@ ${fontFace('JBM', 500, 'normal', font('jetbrains-mono-latin-500-normal.woff2'))}
 /* ------------------------------------------------------------- stack table */
 
 const STACK = [
-  { el: 'fire', name: 'Fogo', domain: 'Interface', items: [['Rc', 'React'], ['Nx', 'Next.js'], ['Ts', 'TypeScript'], ['Js', 'JavaScript']] },
-  { el: 'water', name: 'Água', domain: 'Dados & back-end', items: [['Sb', 'Supabase'], ['Pg', 'PostgreSQL'], ['Ap', 'APIs REST'], ['Jv', 'Java']] },
+  { el: 'fire', name: 'Fogo', domain: 'Java & fundamentos', items: [['Jv', 'Java'], ['Oo', 'POO'], ['Ed', 'Est. de dados'], ['Al', 'Algoritmos']] },
+  { el: 'water', name: 'Água', domain: 'Dados & APIs', items: [['Sq', 'SQL'], ['Pg', 'PostgreSQL'], ['Ap', 'APIs REST'], ['Ms', 'Microsserviços']] },
   { el: 'air', name: 'Ar', domain: 'Automação & IA', items: [['N8', 'n8n'], ['Wh', 'Webhooks'], ['In', 'Integrações'], ['Ai', 'IA aplicada']] },
   { el: 'earth', name: 'Terra', domain: 'Fundação', items: [['Sc', 'Segurança'], ['Aw', 'AWS'], ['Gt', 'Git'], ['Ag', 'Ágil']] },
 ];
@@ -185,7 +185,7 @@ function stack() {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">
 <title id="t">Arsenal — tabela periódica</title>
-<desc id="d">Fogo: React, Next.js, TypeScript, JavaScript. Água: Supabase, PostgreSQL, APIs REST, Java. Ar: n8n, Webhooks, integrações, IA aplicada. Terra: segurança, AWS, Git, ágil.</desc>
+<desc id="d">Fogo: Java, POO, estruturas de dados, algoritmos. Água: SQL, PostgreSQL, APIs REST, microsserviços. Ar: n8n, Webhooks, integrações, IA aplicada. Terra: segurança, AWS, Git, ágil.</desc>
 <style>
 ${fontFace('CG', 300, 'normal', font('cormorant-garamond-latin-300-normal.woff2'))}
 ${fontFace('JBM', 400, 'normal', font('jetbrains-mono-latin-400-normal.woff2'))}

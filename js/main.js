@@ -608,10 +608,10 @@ const termText = {
       '  clear        limpar a tela',
       '  sudo contratar',
     ],
-    whoami: ['henrique valois — engenheiro de software jr.', 'full-stack · automação · ia — capim grosso, ba'],
+    whoami: ['henrique valois — engenheiro de software jr.', 'back-end java · automação · ia — capim grosso, ba'],
     sobre: [
-      'dev full-stack: sistemas web de ponta a ponta, segurança em múltiplas camadas (rls no',
-      'postgresql), integrações via api e automações em n8n. back-end com java e aws.',
+      'foco em back-end java: estruturas de dados, sql, apis e segurança em camadas (rls no',
+      'postgresql), integrações via api e automações em n8n. hoje aprofundando java e aws.',
       'ads na ages, conclusão em 2028. objetivo: engenharia de software em escala.',
     ],
     exp: [
@@ -656,10 +656,10 @@ const termText = {
       '  clear        clear the screen',
       '  sudo hire',
     ],
-    whoami: ['henrique valois — junior software engineer', 'full-stack · automation · ai — capim grosso, brazil'],
+    whoami: ['henrique valois — junior software engineer', 'java back-end · automation · ai — capim grosso, brazil'],
     sobre: [
-      'full-stack dev: end-to-end web systems, multi-layer security (rls on postgresql),',
-      'api integrations and n8n automations. back-end with java and aws.',
+      'java back-end focus: data structures, sql, apis and layered security (rls on postgresql),',
+      'api integrations and n8n automations. currently going deeper into java and aws.',
       'systems analysis & development at ages, class of 2028. goal: engineering at scale.',
     ],
     exp: [

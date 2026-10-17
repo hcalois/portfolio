@@ -4,8 +4,9 @@
 //
 // Uso: node scripts/build.mjs   (a Vercel roda sozinha em todo deploy, ver vercel.json)
 
+import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { cpSync, existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -41,4 +42,11 @@ html = html.replace(/\b(href|src|srcset|data-src)="(\/(?:css|js|assets\/img)\/[^
 });
 writeFileSync(htmlPath, html);
 
-console.log(`dist/ pronto — ${count} referências versionadas`);
+// guard: a syntax error anywhere in the JS would leave the page stuck on the loader,
+// so a broken file fails the deploy and the previous version stays online
+for (const name of readdirSync(join(out, 'js')).filter((f) => f.endsWith('.js'))) {
+  const res = spawnSync(process.execPath, ['--check', join(out, 'js', name)], { encoding: 'utf8' });
+  if (res.status !== 0) throw new Error(`erro de sintaxe em js/${name}:\n${res.stderr}`);
+}
+
+console.log(`dist/ pronto — ${count} referências versionadas, JS verificado`);
