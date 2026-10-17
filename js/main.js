@@ -221,7 +221,7 @@ function renderChannels() {
 let revealIO;
 function observeReveals(scope = document, immediate = false) {
   const els = $$('[data-reveal]:not(.is-in)', scope);
-  if (reduced || !('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('is-in')); return; }
+  if (!('IntersectionObserver' in window)) { els.forEach((el) => el.classList.add('is-in')); return; }
   if (!revealIO) {
     revealIO = new IntersectionObserver((entries) => {
       const shown = entries.filter((e) => e.isIntersecting);
@@ -304,7 +304,7 @@ function fitName() {
 function intro() {
   const count = $('[data-count]');
   const seen = store.get('intro', sessionStorage);
-  const minDur = reduced ? 0 : seen ? 350 : 1300;
+  const minDur = seen ? 350 : 1300;
   const t0 = performance.now();
   const img = $('.hero__img--mono');
   const imgReady = new Promise((res) => {
@@ -430,7 +430,7 @@ function update() {
 
   // statement lights up word by word
   if (words.length) {
-    const p = reduced ? 1 : clamp((vh * 0.86 - (G.stTop - y)) / (G.stH + vh * 0.32), 0, 1);
+    const p = clamp((vh * 0.86 - (G.stTop - y)) / (G.stH + vh * 0.32), 0, 1);
     const lit = Math.round(p * words.length);
     if (lit !== lastLit) {
       words.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
@@ -475,7 +475,7 @@ function setActiveStep(i) {
 function trackJourney() {
   const section = $('.journey');
   if (!section) return;
-  section.classList.toggle('is-tracking', desktop.matches && !reduced);
+  section.classList.toggle('is-tracking', desktop.matches);
   stepIO?.disconnect();
   stepIO = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) setActiveStep(Number(e.target.dataset.step)); });

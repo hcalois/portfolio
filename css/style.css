@@ -76,8 +76,8 @@ kbd {
   border-radius: 3px;
 }
 
-/* grows with big monitors (2K, 4K, ultrawide) instead of stalling at laptop width */
-.wrap { width: 100%; max-width: clamp(1480px, 80vw, 2200px); margin: 0 auto; padding: 0 var(--gutter); }
+/* edge to edge (just the gutter) on every common screen; only giant monitors get a cap */
+.wrap { width: 100%; max-width: 2400px; margin: 0 auto; padding: 0 var(--gutter); }
 .mono { font-family: var(--mono); font-size: clamp(11px, 0.6vw, 14px); line-height: 1.6; letter-spacing: 0.14em; text-transform: uppercase; }
 .dim { color: var(--fg-3); }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
@@ -339,7 +339,7 @@ body.is-loading .nav { opacity: 0; }
 .hero__quote-tr { margin-top: 12px; font-size: clamp(13px, 0.85vw, 16px); line-height: 1.6; color: var(--fg-3); }
 .hero__quote footer { margin-top: 14px; font-size: 10px; }
 
-.hero__name-wrap { padding: 0 var(--gutter); max-width: clamp(1480px, 80vw, 2200px); width: 100%; margin: 0 auto; pointer-events: none; text-align: center; }
+.hero__name-wrap { padding: 0 var(--gutter); max-width: 2400px; width: 100%; margin: 0 auto; pointer-events: none; text-align: center; }
 .hero__name {
   display: block; margin: 0 -0.02em;
   font-family: var(--serif); font-weight: 300; font-size: 18vw;
@@ -784,17 +784,14 @@ body.is-loading .hero__top, body.is-loading .hero__intro, body.is-loading .hero_
 .lite .nav.is-scrolled { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgb(8 8 8 / 0.95); }
 
 /* "Reduce motion" (also switched on by remote-desktop tools such as TeamViewer):
-   nothing slides, parallaxes or reveals, but the slow decorative loops keep turning. */
+   things fade instead of sliding, parallax and grain stop, and the halo keeps turning. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .statement .w { opacity: 1; transition: none; }
-  .hero__name .ch > span { transform: none; transition: none; }
-  .hero__portrait picture, .halo, .hero__top, .hero__intro, .hero__quote, .hero__bar, .menu__links a { transition: none; }
+  .js [data-reveal], .menu__links a { transform: none; }
+  .hero__name .ch > span { transform: none; opacity: 0; transition: opacity 1.2s var(--ease-io); transition-delay: calc(0.3s + var(--i) * 0.05s); }
+  body.is-ready .hero__name .ch > span { opacity: 1; }
   body.is-loading .hero__portrait picture, body.is-loading .hero__top, body.is-loading .hero__intro,
-  body.is-loading .hero__quote, body.is-loading .hero__bar { opacity: 1; transform: none; }
-  body.is-loading .halo { opacity: 1; transform: translate(-50%, -50%); }
-  .grain, .hero__scroll-line::after { animation: none; }
-  .ouroboros { animation-duration: 60s; }
-  .halo__ring { animation-duration: 300s; }
+  body.is-loading .hero__quote, body.is-loading .hero__bar { transform: none; }
+  body.is-loading .halo { transform: translate(-50%, -50%); }
+  .grain { animation: none; }
 }

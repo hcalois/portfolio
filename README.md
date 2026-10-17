@@ -46,3 +46,8 @@ node tools/serve.mjs . 5173
 ```bash
 npx vercel --prod
 ```
+
+A Vercel roda `node scripts/build.mjs` em todo deploy: o site é copiado para `dist/` e cada URL de CSS,
+JS e imagem ganha um hash do conteúdo (`style.css?v=…`). O HTML é sempre revalidado e os arquivos
+versionados ficam em cache por um ano, então um F5 comum já mostra a versão nova e o que não mudou
+não é baixado de novo.
